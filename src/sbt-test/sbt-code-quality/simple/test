@@ -1,0 +1,17 @@
+# check if the scalastyle-config file gets created
+> importScalastyleConfig
+$ exists project/scalastyle-config.xml
+
+# Run Scalastyle static analysis
+> scalastyle
+
+# Run Scapegoat static analysis
+> scapegoat
+
+# Run tests with code coverage
+> clean
+> compile
+> coverage
+> test
+> coverageReport
+> coverageAggregate
