@@ -34,6 +34,10 @@ scriptedLaunchOpts := { scriptedLaunchOpts.value ++
 }
 scriptedBufferLog := false
 
+test.in(Test) := {
+  test.in(Test).dependsOn(scripted.toTask("")).value
+}
+
 addSbtPlugin("org.scoverage" %% "sbt-scoverage" % "1.5.1")
 
 addSbtPlugin("org.scoverage" %% "sbt-coveralls" % "1.2.2")
