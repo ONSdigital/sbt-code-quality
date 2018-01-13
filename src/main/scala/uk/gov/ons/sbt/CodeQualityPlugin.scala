@@ -4,20 +4,18 @@ import scala.collection.JavaConversions._
 
 import sbt.Keys._
 import sbt._
-import org.scalastyle.sbt.ScalastylePlugin
+import sbt.plugins.JvmPlugin
 import org.scalastyle.sbt.ScalastylePlugin.autoImport.{scalastyle, scalastyleConfig, scalastyleFailOnError, scalastyleTarget}
-import com.sksamuel.scapegoat.sbt.ScapegoatSbtPlugin
 import com.sksamuel.scapegoat.sbt.ScapegoatSbtPlugin.autoImport.{scapegoatConsoleOutput, scapegoatOutputPath, scapegoatVersion}
 
 import scoverage.ScoverageKeys.{coverageExcludedPackages, coverageMinimum}
-import scoverage.ScoverageSbtPlugin
 
 object CodeQualityPlugin extends AutoPlugin {
 
   private val scalastyleConfigFilename = "scalastyle-config.xml"
 
   override def trigger = allRequirements
-  override def requires = ScoverageSbtPlugin && ScalastylePlugin && ScapegoatSbtPlugin
+  override def requires = JvmPlugin
 
   object autoImport {
         val importScalastyleConfig = taskKey[Unit]("Imports Scalastyle config from this plugin to the project target path")
